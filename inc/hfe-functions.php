@@ -104,6 +104,18 @@ function get_hfe_single_post_id() {
 }
 
 /**
+ * Display Single Post markup.
+ *
+ */
+function hfe_render_single_post() {
+	if ( false == apply_filters( 'enable_hfe_render_single_post', true ) ) {
+		return;
+	}
+	Header_Footer_Elementor::get_single_post_content();
+}
+
+
+/**
  * Display header markup.
  *
  * @since  1.0.2
