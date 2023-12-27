@@ -25,7 +25,6 @@ function hfe_header_enabled() {
 /**
  * Checks if Single Post is enabled from HFE.
  *
- * @since  1.0.2
  * @return bool True if single post is enabled. False if single post is not enabled
  */
 function hfe_single_post_enabled() {
