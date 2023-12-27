@@ -504,6 +504,15 @@ class Header_Footer_Elementor {
 	}
 
 	/**
+	 * Prints the single post content.
+	 */
+	public static function get_single_post_content()
+	{
+		$single_post_content = self::$elementor_instance->frontend->get_builder_content_for_display(get_hfe_single_post_id());
+		echo $single_post_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
 	 * Prints the Header content.
 	 */
 	public static function get_header_content() {
