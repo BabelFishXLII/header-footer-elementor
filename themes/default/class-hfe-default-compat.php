@@ -44,6 +44,13 @@ class HFE_Default_Compat {
 		if ( hfe_is_before_footer_enabled() ) {
 			add_action( 'hfe_footer_before', [ 'Header_Footer_Elementor', 'get_before_footer_content' ] );
 		}
+
+		if (hfe_single_post_enabled()) {
+			// Replace single.php template.
+			add_filter( 'template_include',[$this, 'override_single_post_template']  );
+			// Display HFE's single post instead of single.php template
+			add_action('hfe_single_post', 'hfe_render_single_post');
+		}
 	}
 
 	/**
@@ -80,6 +87,24 @@ class HFE_Default_Compat {
 		ob_start();
 		locate_template( $templates, true );
 		ob_get_clean();
+	}
+
+	/**
+	 * Function for overriding the default single post (single.php)
+	 *
+	 *
+	 * @return void
+	 */
+	function override_single_post_template( $template ) {
+		// Check if this is a single post request
+		if ( is_single() ) {
+			$custom_template = plugin_dir_path( __FILE__ ) . 'hfe-single-post.php';
+			// Check if the custom template file exists
+			if ( file_exists( $custom_template ) ) {
+				return $custom_template;
+			}
+		}
+		return $template;
 	}
 
 }
