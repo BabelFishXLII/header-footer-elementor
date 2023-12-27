@@ -309,6 +309,7 @@ class HFE_Admin {
 							<option value="type_before_footer" <?php selected( $template_type, 'type_before_footer' ); ?>><?php _e( 'Before Footer', 'header-footer-elementor' ); ?></option>
 							<option value="type_footer" <?php selected( $template_type, 'type_footer' ); ?>><?php _e( 'Footer', 'header-footer-elementor' ); ?></option>
 							<option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'header-footer-elementor' ); ?></option>
+							<option value="type_single_post" <?php selected( $template_type, 'type_single_post' ); ?>><?php _e( 'Single Post', 'header-footer-elementor' ); ?></option>
 						</select>
 					</td>
 				</tr>
