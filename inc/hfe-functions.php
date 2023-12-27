@@ -23,6 +23,23 @@ function hfe_header_enabled() {
 }
 
 /**
+ * Checks if Single Post is enabled from HFE.
+ *
+ * @since  1.0.2
+ * @return bool True if single post is enabled. False if single post is not enabled
+ */
+function hfe_single_post_enabled() {
+	$single_post_id = Header_Footer_Elementor::get_settings( 'type_single_post', '' );
+	$status    = false;
+
+	if ( '' !== $single_post_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'hfe_single_post_enabled', $status );
+}
+
+/**
  * Checks if Footer is enabled from HFE.
  *
  * @since  1.0.2
