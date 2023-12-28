@@ -55,6 +55,22 @@ function hfe_404_enabled() {
 }
 
 /**
+ * Checks if single page is enabled from HFE.
+ *
+ * @return bool True if single page is enabled. False if single page is not enabled
+ */
+function hfe_single_page_enabled() {
+	$single_page_id = Header_Footer_Elementor::get_settings( 'type_single_page', '' );
+	$status    = false;
+
+	if ( '' !== $single_page_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'hfe_single_page_enabled', $status );
+}
+
+/**
  * Checks if Footer is enabled from HFE.
  *
  * @since  1.0.2
@@ -130,7 +146,7 @@ function get_hfe_404_id() {
 		$not_found_id = false;
 	}
 
-	return apply_filters( 'get_hfe_single_post_id', $not_found_id );
+	return apply_filters( 'get_hfe_404_id', $not_found_id );
 }
 
 
@@ -143,6 +159,34 @@ function hfe_render_404() {
 		return;
 	}
 	Header_Footer_Elementor::get_404_content();
+}
+
+
+/**
+ * Get HFE Single Page ID
+ *
+ * @return (String|boolean) single page id if it is set else returns false.
+ */
+function get_hfe_single_page_id() {
+	$single_page_id = Header_Footer_Elementor::get_settings( 'type_single_page', '' );
+
+	if ( '' === $single_page_id ) {
+		$single_page_id = false;
+	}
+
+	return apply_filters( 'get_hfe_single_page_id', $single_page_id );
+}
+
+
+/**
+ * Display Single Page markup.
+ *
+ */
+function hfe_render_404() {
+	if ( false == apply_filters( 'enable_hfe_render_single_page', true ) ) {
+		return;
+	}
+	Header_Footer_Elementor::get_single_page_content();
 }
 
 /**
