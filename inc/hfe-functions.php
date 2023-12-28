@@ -182,7 +182,7 @@ function get_hfe_single_page_id() {
  * Display Single Page markup.
  *
  */
-function hfe_render_404() {
+function hfe_render_single_page() {
 	if ( false == apply_filters( 'enable_hfe_render_single_page', true ) ) {
 		return;
 	}
