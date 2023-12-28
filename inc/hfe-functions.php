@@ -39,6 +39,22 @@ function hfe_single_post_enabled() {
 }
 
 /**
+ * Checks if 404 is enabled from HFE.
+ *
+ * @return bool True if 404 is enabled. False if 404 is not enabled
+ */
+function hfe_404_enabled() {
+	$not_found_id = Header_Footer_Elementor::get_settings( 'type_404', '' );
+	$status    = false;
+
+	if ( '' !== $not_found_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'hfe_404_enabled', $status );
+}
+
+/**
  * Checks if Footer is enabled from HFE.
  *
  * @since  1.0.2
