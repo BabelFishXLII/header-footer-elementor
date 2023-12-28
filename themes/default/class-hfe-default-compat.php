@@ -129,7 +129,7 @@ class HFE_Default_Compat
 		if (file_exists($custom_template)) {
 			return $custom_template;
 		}
-		return $template;
+		return $template ?? null;
 	}
 }
 
