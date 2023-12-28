@@ -62,6 +62,13 @@ class HFE_Default_Compat
 			// Display HFE's 404 instead of 404.php template
 			add_action('hfe_404', 'hfe_render_404');
 		}
+
+		if (hfe_single_page_enabled()) {
+			// Replace template.
+			add_filter('template_include', [$this, 'override_template']);
+			// Display HFE's single page
+			add_action('hfe_single_page', 'hfe_render_single_page');
+		}
 	}
 
 	/**
