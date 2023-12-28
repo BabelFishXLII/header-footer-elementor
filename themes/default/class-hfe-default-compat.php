@@ -122,6 +122,8 @@ class HFE_Default_Compat
 			$custom_template = plugin_dir_path(__FILE__) . 'hfe-single-post.php';
 		} elseif (is_404()) {
 			$custom_template = plugin_dir_path(__FILE__) . 'hfe-404.php';
+		} elseif (is_page()){
+			$custom_template = plugin_dir_path(__FILE__) . 'hfe-single-page.php';
 		}
 		// Check if the custom template file exists
 		if (file_exists($custom_template)) {
