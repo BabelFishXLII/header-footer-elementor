@@ -117,6 +117,18 @@ function get_hfe_404_id() {
 	return apply_filters( 'get_hfe_single_post_id', $not_found_id );
 }
 
+
+/**
+ * Display 404 markup.
+ *
+ */
+function hfe_render_404() {
+	if ( false == apply_filters( 'enable_hfe_render_404', true ) ) {
+		return;
+	}
+	Header_Footer_Elementor::get_404_content();
+}
+
 /**
  * Display Single Post markup.
  *
