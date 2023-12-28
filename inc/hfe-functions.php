@@ -90,7 +90,6 @@ function get_hfe_footer_id() {
 /**
  * Get HFE Single Post ID
  *
- * @since  1.0.2
  * @return (String|boolean) single post id if it is set else returns false.
  */
 function get_hfe_single_post_id() {
@@ -101,6 +100,21 @@ function get_hfe_single_post_id() {
 	}
 
 	return apply_filters( 'get_hfe_single_post_id', $single_post_id );
+}
+
+/**
+ * Get HFE 404 ID
+ *
+ * @return (String|boolean) not found id if it is set else returns false.
+ */
+function get_hfe_404_id() {
+	$not_found_id = Header_Footer_Elementor::get_settings( 'type_404', '' );
+
+	if ( '' === $not_found_id ) {
+		$not_found_id = false;
+	}
+
+	return apply_filters( 'get_hfe_single_post_id', $not_found_id );
 }
 
 /**
