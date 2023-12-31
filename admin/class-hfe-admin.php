@@ -309,11 +309,13 @@ class HFE_Admin {
 							<option value="type_before_footer" <?php selected( $template_type, 'type_before_footer' ); ?>><?php _e( 'Before Footer', 'header-footer-elementor' ); ?></option>
 							<option value="type_footer" <?php selected( $template_type, 'type_footer' ); ?>><?php _e( 'Footer', 'header-footer-elementor' ); ?></option>
 							<option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'header-footer-elementor' ); ?></option>
+							<?php if(get_template() == 'hello-elementor'): ?>
 							<option value="type_single_post" <?php selected( $template_type, 'type_single_post' ); ?>><?php _e( 'Single Post', 'header-footer-elementor' ); ?></option>
 							<option value="type_single_page" <?php selected( $template_type, 'type_single_page' ); ?>><?php _e( 'Single Page', 'header-footer-elementor' ); ?></option>
 							<option value="type_archive" <?php selected( $template_type, 'type_archive' ); ?>><?php _e( 'Archive', 'header-footer-elementor' ); ?></option>
 							<option value="type_404" <?php selected( $template_type, 'type_404' ); ?>><?php _e( 'Not Found (404)', 'header-footer-elementor' ); ?></option>
 							<option value="type_search_results" <?php selected( $template_type, 'type_search_results' ); ?>><?php _e( 'Search Results', 'header-footer-elementor' ); ?></option>
+							<?php endif; ?>
 						</select>
 					</td>
 				</tr>
