@@ -71,6 +71,22 @@ function hfe_single_page_enabled() {
 }
 
 /**
+ * Checks if archive is enabled from HFE.
+ *
+ * @return bool True if archive is enabled. False if archive is not enabled
+ */
+function hfe_archive_enabled() {
+	$archive_id = Header_Footer_Elementor::get_settings( 'type_archive', '' );
+	$status    = false;
+
+	if ( '' !== $archive_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'hfe_archive_enabled', $status );
+}
+
+/**
  * Checks if Footer is enabled from HFE.
  *
  * @since  1.0.2
@@ -187,6 +203,33 @@ function hfe_render_single_page() {
 		return;
 	}
 	Header_Footer_Elementor::get_single_page_content();
+}
+
+/**
+ * Get HFE Archive ID
+ *
+ * @return (String|boolean) archive id if it is set else returns false.
+ */
+function get_hfe_archive_id() {
+	$archive_id = Header_Footer_Elementor::get_settings( 'type_archive', '' );
+
+	if ( '' === $archive_id ) {
+		$archive_id = false;
+	}
+
+	return apply_filters( 'get_hfe_archive_id', $archive_id );
+}
+
+
+/**
+ * Display Archive markup.
+ *
+ */
+function hfe_render_archive() {
+	if ( false == apply_filters( 'enable_hfe_render_archive', true ) ) {
+		return;
+	}
+	Header_Footer_Elementor::get_archive_content();
 }
 
 /**
