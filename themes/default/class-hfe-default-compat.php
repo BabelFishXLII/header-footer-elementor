@@ -77,6 +77,13 @@ class HFE_Default_Compat
 			add_action('hfe_archive', 'hfe_render_archive');
 		}
 
+		if (hfe_search_enabled()) {
+			// Replace template.
+			add_filter('template_include', [$this, 'override_template']);
+			// Display HFE's search page
+			add_action('hfe_search', 'hfe_render_search');
+		}
+
 	}
 
 	/**
@@ -134,6 +141,8 @@ class HFE_Default_Compat
 			$custom_template = plugin_dir_path(__FILE__) . 'hfe-single-page.php';
 		} elseif (is_archive()){
 			$custom_template = plugin_dir_path(__FILE__) . 'hfe-archive.php';
+		} elseif (is_search()){
+			$custom_template = plugin_dir_path(__FILE__) . 'hfe-search.php';
 		}
 		// Check if the custom template file exists
 		if (file_exists($custom_template)) {
