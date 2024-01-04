@@ -314,7 +314,7 @@ class HFE_Admin {
 							<option value="type_single_page" <?php selected( $template_type, 'type_single_page' ); ?>><?php _e( 'Single Page', 'header-footer-elementor' ); ?></option>
 							<option value="type_archive" <?php selected( $template_type, 'type_archive' ); ?>><?php _e( 'Archive', 'header-footer-elementor' ); ?></option>
 							<option value="type_404" <?php selected( $template_type, 'type_404' ); ?>><?php _e( 'Not Found (404)', 'header-footer-elementor' ); ?></option>
-							<option value="type_search_results" <?php selected( $template_type, 'type_search_results' ); ?>><?php _e( 'Search Results', 'header-footer-elementor' ); ?></option>
+							<option value="type_search" <?php selected( $template_type, 'type_search' ); ?>><?php _e( 'Search', 'header-footer-elementor' ); ?></option>
 							<?php endif; ?>
 						</select>
 					</td>
