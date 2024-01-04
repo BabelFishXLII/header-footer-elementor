@@ -87,6 +87,22 @@ function hfe_archive_enabled() {
 }
 
 /**
+ * Checks if search is enabled from HFE.
+ *
+ * @return bool True if search is enabled. False if search is not enabled
+ */
+function hfe_search_enabled() {
+	$search_id = Header_Footer_Elementor::get_settings( 'type_search', '' );
+	$status    = false;
+
+	if ( '' !== $search_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'hfe_search_enabled', $status );
+}
+
+/**
  * Checks if Footer is enabled from HFE.
  *
  * @since  1.0.2
@@ -165,6 +181,21 @@ function get_hfe_404_id() {
 	return apply_filters( 'get_hfe_404_id', $not_found_id );
 }
 
+/**
+ * Get HFE Archive ID
+ *
+ * @return (String|boolean) archive id if it is set else returns false.
+ */
+function get_hfe_archive_id() {
+	$archive_id = Header_Footer_Elementor::get_settings( 'type_archive', '' );
+
+	if ( '' === $archive_id ) {
+		$archive_id = false;
+	}
+
+	return apply_filters( 'get_hfe_archive_id', $archive_id );
+}
+
 
 /**
  * Display 404 markup.
@@ -206,18 +237,18 @@ function hfe_render_single_page() {
 }
 
 /**
- * Get HFE Archive ID
+ * Get HFE Search ID
  *
- * @return (String|boolean) archive id if it is set else returns false.
+ * @return (String|boolean) search id if it is set else returns false.
  */
-function get_hfe_archive_id() {
-	$archive_id = Header_Footer_Elementor::get_settings( 'type_archive', '' );
+function get_hfe_search_id() {
+	$search_id = Header_Footer_Elementor::get_settings( 'type_search', '' );
 
-	if ( '' === $archive_id ) {
-		$archive_id = false;
+	if ( '' === $search_id ) {
+		$search_id = false;
 	}
 
-	return apply_filters( 'get_hfe_archive_id', $archive_id );
+	return apply_filters( 'get_hfe_search_id', $search_id );
 }
 
 
@@ -230,6 +261,17 @@ function hfe_render_archive() {
 		return;
 	}
 	Header_Footer_Elementor::get_archive_content();
+}
+
+/**
+ * Display Search markup.
+ *
+ */
+function hfe_render_search() {
+	if ( false == apply_filters( 'enable_hfe_render_search', true ) ) {
+		return;
+	}
+	Header_Footer_Elementor::get_search_content();
 }
 
 /**
