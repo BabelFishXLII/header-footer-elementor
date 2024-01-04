@@ -535,6 +535,15 @@ class Header_Footer_Elementor
 	}
 
 	/**
+	 * Prints the search content.
+	 */
+	public static function get_search_content()
+	{
+		$search_content = self::$elementor_instance->frontend->get_builder_content_for_display(get_hfe_search_id());
+		echo $search_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
 	 * Prints the 404 content.
 	 */
 	public static function get_404_content()
@@ -598,7 +607,8 @@ class Header_Footer_Elementor
 			'type_single_post' == $setting ||
 			'type_404' == $setting ||
 			'type_single_page' == $setting ||
-			'type_archive' == $setting
+			'type_archive' == $setting ||
+			'type_search' == $setting
 		) {
 			$templates = self::get_template_id($setting);
 
